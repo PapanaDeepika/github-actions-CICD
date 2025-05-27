@@ -9,13 +9,11 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  
 
 jobs:
-  pages-build-deployment:  # <-- This MUST be named exactly this
+  deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout code
@@ -27,8 +25,10 @@ jobs:
       - name: Upload static files
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'  # Or your actual static build directory
+          path: '.'
+
+     
+
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v3
