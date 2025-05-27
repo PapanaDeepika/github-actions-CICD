@@ -24,7 +24,13 @@ jobs:
       - name: Upload static files
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Or 'dist' or 'public' if your site is in a folder
+          path: '.'
+
+      - name: Ensure upload-artifact is available (dummy step)
+        uses: actions/upload-artifact@v3
+        with:
+          name: dummy
+          path: README.md  # Or any small file
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v3
