@@ -25,6 +25,13 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: '.'
+          
+      - name: Pin upload-artifact@v3 to satisfy hidden dependencies
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: noop
+          path: README.md
+
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v3
